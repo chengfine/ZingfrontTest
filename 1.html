@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>返回第二长的公共单词</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+	function getTheSame() {
+		var s = "This is C programming text";
+		var t = "This is a text for C programming";
+
+        var array1 = s.split(" ");
+		var array2 = t.split(" ");
+
+        var result = new Array();
+
+
+        for (var i = 0; i < array1.length; i++) {
+            if (t.indexOf(array1[i].toString()) > -1) {
+                for (var j = 0; j < array2.length; j++) {
+                    if (array1[i] == array2[j]) {
+                        result.push(array1[i]);
+                        break;                    
+                    }                
+                }            
+            }        
+        }        
+        console.log(result);
+        var array3 = [];
+        for(var k = 0;k<result.length;k++){
+        	
+			console.log(result[k].length);
+			array3.push(result[k].length);
+			
+		}
+		var array4 = array3;
+		console.log (array4);
+		var maxNumber = Math.max.apply(null,array4);//找出其中的最大值
+		console.log(maxNumber);
+		var maxNumber_index = array4.indexOf(maxNumber);//最大值的索引
+		console.log(maxNumber_index);
+
+
+		array3[maxNumber_index] = 0;//将最大数换成0
+		console.log(array4);
+
+
+		var secNumber = Math.max.apply(null,array4);//重新比较其中的最大值
+		console.log(secNumber);
+		var secNumber_index = array4.indexOf(secNumber);//再次找出最大值的索引
+		console.log(secNumber_index);
+
+		console.log(result[secNumber_index]);//获取到其中的第二长的字符
+        // return result;    	
+	} 
+	// var result1 = result;
+
+getTheSame();
+
+</script>

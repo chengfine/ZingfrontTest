@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>求连续的数</title>
+	<style>
+		input{
+			width: 200px;
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+<h3>求一个数的连续整数和</h3>
+<input type="text" autofocus="autofocus" placeholder="请输入1个正整数N(N≤10000)" id="input">
+<button id="btn">确定</button>
+
+	<script>
+
+	//	for 循环遍历从n/2(向上取整)处开始从后往前遍历, 遍历开始时, 设置一个json对象, 用来接收连续加数项的开始和结束值,嵌套一个while循环, 从后往前开始连加并设置一个变量来存储连加值, 当存在连加项符合条件时, 将json放入一个数组中
+	
+	var oInput = document.getElementById("input");
+	var oBtn = document.getElementById("btn");
+	var oDiv = document.getElementById("div");
+	oBtn.onclick = function(){
+
+		var n = oInput.value;   //获取到输入的那个数
+		var result = []
+		var count = 0
+		for(var i=Math.ceil(n/2);i>=1;i--){
+		  var json = {}
+		  var j = i
+		  json['start'] = j
+		  while (i>Math.ceil(n/4)) {
+		    count += j 
+		    j--
+		    if(count == n) {
+		      json['end'] = j+1
+		      result.push(json)
+		      count = 0
+		      break
+		    }
+		    if(count > n || j=== 0) {
+		      count = 0
+		      break
+		    }
+		  }
+		}
+
+		if(result.length === 0) {
+		  document.write('NONE')
+		}else {
+		  for(var i = 0; i<result.length;i++) {
+		    var temp = ''
+		    for(var j = result[i].end;j<=result[i].start;j++) {
+		      temp += j+'+'
+		    }
+		    newStr = temp.slice(0,-1)
+		    document.write(n+'='+newStr+"<br/>");
+		  }
+		}
+	}
+		
+
+	</script>
+</body>
+</html>
